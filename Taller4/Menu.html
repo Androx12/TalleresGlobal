@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+
+    <link href="Estilo.css" rel="stylesheet"/>
+
+    <script language="javascript" type="text/javascript"> 
+        function cerrar() { 
+           window.open('','_parent',''); 
+           window.close(); 
+        } 
+    </script>
+</head>
+<body>
+    <form id="Menu" runat="server">
+        <div>
+            <header>
+                <div class="titulo">
+                    <h1>Menu Principal</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <a href="Login.html" class="EnlacesMP">Ir al Login</a>
+                        <a href="Resgistrar.html" class="EnlacesMP">Ir a Registro</a>
+                        <a href="Jugador.html" class="EnlacesMP">Ver Jugador</a>
+                        <a href="javascript:cerrar();" class="EnlacesMP">Cerrar</a>
+                    </ul>
+                </nav>
+            </header>
+
+            <footer>
+                <p class="pie">Programación Avanzada Taller 4</p>
+            </footer>
+        </div>
+    </form>
+    <script src="Scripts.js"></script>
+</body>
+</html>

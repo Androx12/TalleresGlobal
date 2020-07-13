@@ -1,6 +1,6 @@
 Andrey Rivera Quesada
 
-Link en GIT: https://github.com/Androx12/Taller3_PA.git
+Link en GIT: https://github.com/Androx12/TalleresGlobal.git
 
 Este programa se ejecuta desde el modulo Menu.html que se encuentra dentro del directorio Taller4
 El modulo Menu realiza la distribución completa de los demas modulos.

@@ -23,6 +23,7 @@ class Controller:
                 contador = contador + 1
                 print ("El jugador número {} es {}".format(contador, jugador.get('username')))
 
+
     def mRegistrarJugador (self, nuevo):
         with open (self.usuariosJson, "w") as contJugadores:
             json.dump(self.mAgregar(nuevo), contJugadores, indent=4)
@@ -80,27 +81,31 @@ class Controller:
             contador = Counter(nuevoRegistro)
             Repeticiones = len([tupla[1] for tupla in list(contador.items()) if tupla[1]>1])
 
-            if(Repeticiones == 0):
+            if(len(nuevoRegistro) >= 8):
+                if(Repeticiones == 0):
 
-                self.bandNumeros = None
-                self.banderaCaract = None
-                for item in nuevoRegistro:
+                    self.bandNumeros = None
+                    self.banderaCaract = None
+                    for item in nuevoRegistro:
 
-                    try:
-                        if(float(item)):
-                            self.bandNumeros = True
-                    except:
-                        self.banderaCaract = True
-                        
-                if((self.bandNumeros == True) and (self.banderaCaract == True)):
-                    print("Contraseña admitida: {}".format(nuevoRegistro))
-                    return True
+                        try:
+                            if(float(item)):
+                                self.bandNumeros = True
+                        except:
+                            self.banderaCaract = True
+                            
+                    if((self.bandNumeros == True) and (self.banderaCaract == True)):
+                        print("Contraseña admitida: {}".format(nuevoRegistro))
+                        return True
+                    else:
+                        print("Contraseña NO admitida, debe contener letras y numeros: {}".format(nuevoRegistro))
+                        return False
                 else:
-                    print("Contraseña NO admitida, debe contener letras y numeros: {}".format(nuevoRegistro))
+                    
+                    print("Contraseña NO admitida, no puede repetir caracteres: {}".format(nuevoRegistro))
                     return False
             else:
-                
-                print("Contraseña NO admitida, no puede repetir caracteres: {}".format(nuevoRegistro))
+                print("Contraseña NO admitida, debe contener mínimo 8 caracteres: {}".format(nuevoRegistro))
                 return False
             
         if(caso == "correo"):
@@ -118,9 +123,36 @@ class Controller:
                 print("Correo NO admitido, es necesario ingresar '@': {}".format(nuevo))
                 return False
 
-'''
-if __name__ == '__main__':
     
-    obj = Controller()
-    nuevo = {'username': 'Nuevo3', 'password': 'Nuevo3'}
-    obj.mVerificarFormatos("pas5fword","pass")'''
+    def mVerificarLogin(self, usuario, contrasena):
+
+        with open (self.usuariosJson) as contJugadores:
+            jugadores = json.load(contJugadores)
+
+            for jugador in jugadores:
+                if(usuario == jugador.get('username')):
+                    self.banderaExistencia = True 
+                    break
+                else:
+                    self.banderaExistencia = False
+            
+            if(self.banderaExistencia):
+                
+                self.banderaExistencia = None
+                for jugador in jugadores:
+
+                    if(usuario == jugador.get('username') and contrasena== jugador.get('password')):
+                        self.banderaExistencia = True 
+                        break
+                    else:
+                        self.banderaExistencia = False
+
+                if(self.banderaExistencia):
+                    self.obj_VistaMenu.mLoginCorrecto()
+                    return True
+                else:
+                    self.obj_VistaMenu.mLoginIncorrecto()
+                    return False
+            else:
+                self.obj_VistaMenu.mNoExiste()
+                return False

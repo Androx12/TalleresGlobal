@@ -13,6 +13,7 @@ class ejecucionSistemaControl:
         self.usuario = ''
         self.contrasena = ''
         self.banderaRegistro = None
+        self.banderaLogin = None
 
     def CorrerPrograma(self):
         
@@ -33,8 +34,21 @@ class ejecucionSistemaControl:
                     sEntrada_Interna = input("Seleccione una opción de Menú --> ")
 
                     if sEntrada_Interna == '1':
+                        
                         self.obj_VistaMenu.mDiezLineas()
-                        print('Menu 1 Interno')
+                        self.obj_VistaMenu.mLoginUsuario()
+                        self.banderaLogin = True
+                        while(self.banderaLogin):
+
+                            self.usuario = input("Digite su usuario --> ")
+                            print("")
+                            self.contrasena = input("Digite su contraseña --> ")
+                            print("")
+
+                            if(self.obj_Controller.mVerificarLogin(self.usuario,self.contrasena)):
+                                self.banderaLogin = False
+                            else:
+                                self.banderaLogin = True
                         self.obj_VistaMenu.mContinuar()
                     else:
                         if sEntrada_Interna == '2':

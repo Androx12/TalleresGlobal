@@ -66,6 +66,32 @@ class vistasMenu:
         print("Lo sentimos ese nombre de usuario está en uso")
         print("Intenta nuevamente con otro nombre")
 
+
+    def mLoginIncorrecto(self):
+        print("----------------------------------------------")
+        print("")
+        print("")
+        print("")
+        print("            OOOOPS!")
+        print("")
+        print("         ¯\\_(ツ)_/¯")
+        print("")
+        print("Credenciales invalidas, intente de nuevo")
+        print("")
+
+
+    def mNoExiste(self):
+        print("----------------------------------------------")
+        print("")
+        print("")
+        print("")
+        print("            OOOOPS!")
+        print("")
+        print("         ¯\\_(ツ)_/¯")
+        print("")
+        print("El usuario no existe, verifique de nuevo")
+        print("")
+
     def mCreado(self):
         print("----------------------------------------------")
         print("")
@@ -77,9 +103,26 @@ class vistasMenu:
         print("")
         print("Su usuario se ha creado satisfactoriamente")
 
+    def mLoginCorrecto(self):
+        print("----------------------------------------------")
+        print("")
+        print("")
+        print("")
+        print("            EXITO!")
+        print("")
+        print("            (っ▀¯▀)つ  ")
+        print("")
+        print("Login realizado de manera exitosa")
+
 
     def mRegistroNuevo(self):
         print("♪    Registro de nuevo jugaodr    ♪")
+        print("")
+        print("")
+
+    
+    def mLoginUsuario(self):
+        print("♪    Login de jugador existente   ♪")
         print("")
         print("")
 

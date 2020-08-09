@@ -44,14 +44,14 @@ class ejecucionSistemaControl:
                             print("")
                             self.contrasena = input("Digite su contraseña --> ")
                             print("")
-
+                            #Se llama al metodo de verificar login y sus respectivas vistas
                             if(self.obj_Controller.mVerificarLogin(self.usuario,self.contrasena)):
                                 self.banderaLogin = False
                             else:
                                 self.banderaLogin = True
                         self.obj_VistaMenu.mContinuar()
                     else:
-                        if sEntrada_Interna == '2':
+                        if sEntrada_Interna == '2': #Los flujos funcionan con las respuestas booleanas del controller
                             
                             self.obj_VistaMenu.mDiezLineas()
                             self.obj_VistaMenu.mRegistroNuevo()
@@ -60,6 +60,7 @@ class ejecucionSistemaControl:
                             while(self.banderaRegistro): 
                                 print("")
                                 self.correo = input("Por favor ingrese su correo --> ")
+                                #Se llama al metodo verificar formatos con su respectivo caso 'correo'
                                 if(self.obj_Controller.mVerificarFormatos(self.correo,"correo")):
                                     self.banderaRegistro = False
                                 else:
@@ -67,14 +68,15 @@ class ejecucionSistemaControl:
 
                             self.banderaRegistro = True
                             while(self.banderaRegistro): 
+
                                 print("")
                                 self.usuario = input("Por favor cree un usuario --> ")
                                 print("")
                                 self.contrasena = input("Por favor cree una contraseña --> ")
                                 nuevo = {'username': self.usuario, 'password': self.contrasena}
-
+                                #Se llama al metodo verificar formatos con su respectivo caso 'pass'
                                 if(self.obj_Controller.mVerificarFormatos(nuevo,"pass")):
-
+                                    #Se llama al metodo verificar formatos con su respectivo caso 'usuario'
                                     if(self.obj_Controller.mVerificarFormatos(nuevo,"usuario")):
                                         self.banderaRegistro = False
                                         print('Nuevo usuario: {}'.format(nuevo['username']))
@@ -90,10 +92,11 @@ class ejecucionSistemaControl:
                                 print('')
                                 print('Lista de Jugadores.')
                                 print('')
+                                #Se llama al metodo Cargar jugadores que solo despliega los datos
                                 self.obj_Controller.mCargarJugadores()
                                 self.obj_VistaMenu.mContinuar()
 
-                            else:
+                            else:   #Flujo para opción inválida en menu interno
                                 self.obj_VistaMenu.mDiezLineas()
                                 print('Entrada invalida.')
                                 print("Las opciones del Menú interno son '1', '2' o '3'.")
@@ -103,7 +106,7 @@ class ejecucionSistemaControl:
                                     key = msvcrt.getwch()   #como un HANDLE de .Net
                                 self.obj_VistaMenu.mDiezLineas()
                 else:
-                    if sEntrada_Usuario == '2':  #Flujo en S
+                    if sEntrada_Usuario == '2':  #Flujo en 2
                         self.obj_VistaMenu.mDiezLineas()
                         self.obj_VistaMenu.mFin_Programa() #Vista de Salida
                         BanderaPrograma = False
